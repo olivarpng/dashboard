@@ -1,0 +1,46 @@
+/* O Pai de Todos: Coloca Menu e Main lado a lado */
+.dashboard-container {
+    display: flex;
+    align-items: stretch; /* Garante que as duas colunas tenham a mesma altura */
+    flex: 1; /* Preenche todo espaço vertical disponível (vh) */
+}
+
+/* O conteúdo principal ocupa o resto da tela à direita */
+main {
+    flex: 1;
+    padding: 30px;
+    background-color: #f8f9fa; /* Um cinza bem clarinho para destacar */
+}
+
+/* Barra lateral da navegação */
+nav{
+    width: 200px;
+    background-color: #2c3e50;
+    padding: 20px;
+
+    /* As duas linhas abaixo serão necessárias para empurrar o ícone do perfil do úsuario */
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #34495e;
+    color: #ffcc00;
+}
