@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
+    <link rel="stylesheet" href="tabela.css">
+    <link rel="stylesheet" href="dash.css">    
+    <title>Listagem de Usuários</title>
 </head>
 <body>
+    <div class="dashboard-container">
+        <nav>
+            <ul>
+                <li><a href="index.php">Início</a></li>
+                <li><a href="#">Projetos</a></li>
+                <li><a href="#">Relatórios</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+            <div class="perfil-usuario">
+                <img src="https://ui-avatars.com/api/?name=Olivar&color=fff" alt="Avatar">
+                <span>Olivar</span>
+            </div>
+            </nav>
+
+
+
     <main>
         <div class="header-content">
             <h2>Gestão de Usuários</h2>
@@ -40,10 +58,14 @@
                         <td>Editor</td>
                         <td>Ativo</td>
                         <td>Editar</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>  
-    </main>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        </main>
+    </div>
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> - Desenvolvido por Olivar</p>
+    </footer>
 </body>
 </html>
