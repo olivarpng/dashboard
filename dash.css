@@ -115,7 +115,7 @@ footer{
 .btn:hover{
     background-color: #dfdfdf;
 }
-
+/* container da tabela */
 .table-responsive{
     background-color: white;
     border-radius: 8px;
