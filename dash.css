@@ -1,39 +1,77 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimentos padrão */
 }
-/* O Pai de Todos: Coloca Menu e Main lado a lado */
+body{
+    background-color: #dfdfdf;
+    font-family: 'Courier New', Courier, monospace;
+    color: #333333;
 
+    display: flex;
+    flex-direction: column; /* Coloca o topo, meio e rodapé em uma coluna flexível */
+    min-height: 100vh; /* O body passa a ter, no mínimo, 100% da altura da sua tela */
+
+}
+
+/* O Pai de Todos: Coloca Menu e Main lado a lado */
 .dashboard-container {
     display: flex;
     align-items: stretch; /* Garante que as duas colunas tenham a mesma altura */
-    flex: 1; /* Preenche todo espaço vertical disponível (vh) */
+    flex: 1; /* Preenche todo o espaço vertical disponível (vh) */
 }
 
 /* O conteúdo principal ocupa o resto da tela à direita */
 main {
-    flex: 1;
+    flex: 1; /* Ocupa todo o espaço restante à direita do menu */
     padding: 30px;
-    background-color: #f8f9fa; /* Um cinza bem clarinho para destacar */
+    background-color: #f8f9fa;
 }
 
-/* Barra lateral da navegação */
-nav{
-    width: 200px;
-    background-color: #2c3e50;
+.container-cards {
+    display: flex; /* Coloca os cards em linha */
+    flex-wrap: wrap; /* A quebra automática de linha */
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+article {
+    display: flex; /* Faz o card usar flexbox */
+    flex: 1; /* Faz com que os cards cresçam igualmente */
+    flex-direction: column; /* Organiza o conteúdo do card de cima para baixo */
+    min-width: 250px; /* Impede o esmagamento do card */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+article h2 {
+    color: #004a8d;
+    margin-bottom: 10px;
+}
+
+article p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+
+/* Barra lateral de navegação */
+nav {
+    width: 200px; /* Largura fixa da barra lateral */
+    background-color: #2c3e50; /* Azul escuro */
     padding: 20px;
 
-    /* As duas linhas abaixo serão necessárias para empurrar o ícone do perfil do úsuario */
-    display: flex;
-    flex-direction: column;
+    /* As duas linhas abaixo serão necessárias para empurrar o ícone do perfil do usuário */
+    display: flex;/* Coloca os itens do menu em uma coluna */
+    flex-direction: column; /* Alinha os itens do menu verticalmente */
 }
 
-nav ul{
+nav ul {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 0;
-    list-style: none;
+    flex-direction: column; /* Desfaz a linha horizontal da Parte 1 */
+    gap: 15px; /* Espaçamento entre os itens da lista */
+    padding: 0; /* Remove o preenchimento padrão da lista */
+    list-style: none; /* Remove os marcadores padrão da lista */
 }
 
 nav a {
@@ -51,102 +89,84 @@ nav a:hover {
 }
 
 .perfil-usuario {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color:white;
+    display: flex; /* Alinha o avatar e o nome do usuário horizontalmente */
+    align-items: center; /* Centraliza verticalmente o avatar e o nome */
+    gap: 10px; /* Espaçamento entre o avatar e o nome */
+    color: white;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil separando o perfil do menu */
+    
+    margin-top: auto; /* Empurra o perfil para o final da barra lateral */
 }
 
-.perfil-usuario img{
-    width: 40px;
-    border-radius: 50%;
+.perfil-usuario img {
+    width: 40px; /* Largura do avatar */
+    border-radius: 50%; /* Foto redonda */
 }
 
-.container-cards{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-article{
-    flex: 1;
-    min-width: 250px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-body{
-    background-color: #dfdfdf;
-    font-family: 'Courier New', Courier, monospace;
-    color: #333;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-
-}
-
-footer{
+footer {
     background-color: #333;
-    color:white;
+    color: white;
     text-align: center;
     padding: 15px;
     font-size: 14px;
-
 }
 
-.btn{
-    margin-top: auto;
+.btn {
+    margin-top: auto; /* Empurra o botão pro fundo do article */
     display: inline-block;
     text-align: center;
     background-color: #004a8d;
-    color:white;
+    color: white;
     padding: 10px;
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.3s;
 }
 
-.btn:hover{
-    background-color: #dfdfdf;
-}
-/* container da tabela */
-.table-responsive{
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+.btn:hover {
+    background-color: #003366;
 }
 
-table{
-    width: 100%;
-    border-collapse: collapse;
+/* Formatação para os formulários */
+.card-form {
+    background: white;
+    max-width: 700px; /* Evita que o form fique muito largo em telas grandes */
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-th {
-    background-color: #ffffff;
-    padding: 15px;
-    text-align: left;
-    font-size: 13px;
-    text-transform: uppercase;
+.form-header { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Label em cima, Input embaixo */
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
-td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-    color: #444;
+.form-row { display: flex; gap: 20px; } /* Coloca dois campos lado a lado */
+.flex-1 { flex: 1; }
+
+label { font-weight: bold; color: #2c3e50; font-size: 14px; }
+
+input, select {
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #004a8d;
+.btn-save {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-tbody tr:hover {
-    background-color: pink;
-}
+input:focus { border-color: #004a8d; outline: none; box-shadow: 0 0 0 3px rgba(0,74,141,0.1); }
