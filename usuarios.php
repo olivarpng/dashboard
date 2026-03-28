@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de usuários</title>
-    <link rel="stylesheet" href="tabelas.css">
+    <link rel="stylesheet" href="tabela.css">
     <link rel="stylesheet" href="dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -59,7 +59,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6" align="right"><a href="cad-usuario.php" class="bnt-add"><i
+                            <td colspan="6" align="right"><a href="cad-usuarios.php" class="bnt-add"><i
                                         class="fa-solid fa-plus"></i>Adicionar Usuário</a>
                     </tfoot>
                 </table>
