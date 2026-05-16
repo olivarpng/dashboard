@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
+    <title>Categorias</title>
     <link rel="stylesheet" href="dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,29 +15,27 @@
         <main>
             <div class="header-content">
                 <div class="header-title">
-                    <h2>Gestão de Usuários</h2>
-                    <p>Visualize e gerencie as permissões dos usuários do sistema.</p>
+                    <h2>Gestão de Categorias</h2>
+                    <p>Visualize e gerencie as categorias do sistema.</p>
                 </div>
-                <a href="cad-usuarios.php" class="btn registro">Novo Usuário</a>
+                <a href="cad-categorias.php" class="btn registro">Nova Categoria</a>
             </div>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Acesso</th>
+                            <th style="text-align: center;">Nome</th>
                             <th>Status</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="lista-usuarios">
-                        <!-- Usuarios renderizados pelo JavaScript -->
+                    <tbody id="lista-categorias">
+                        <!-- Categorias renderizadas pelo JavaScript -->
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">Informação de quantidade de registros...</td>
+                            <td colspan="6" align="right">Informação da quantidade de registros</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -50,44 +48,42 @@
         });
 
         function renderTable() {
-            const tbody = document.getElementById('lista-usuarios');
-            const lista = JSON.parse(localStorage.getItem('bancoUsuarios')) || [];
+            const tbody = document.getElementById('lista-categorias');
+            const lista = JSON.parse(localStorage.getItem('bancoCategorias')) || [];
             
             tbody.innerHTML = '';
-
+            
             if (lista.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Nenhum usuário encontrado.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Nenhuma categoria encontrada.</td></tr>';
                 return;
             }
 
-            lista.forEach((user, index) => {
+            lista.forEach((cat, index) => {
                 const tr = document.createElement('tr');
                 
-                const isAtivo = (user.status === '1' || user.status === 'Ativo');
+                // Formatação do Status (value 1 = Ativo, 2 = Inativo)
+                const isAtivo = (cat.status === '1' || cat.status === 'Ativo');
                 const badgeClass = isAtivo ? 'badge ativo' : 'badge inativo';
                 const statusText = isAtivo ? 'Ativo' : 'Inativo';
-                const nivelTexto = user.nivel == "2" ? "Administrador" : "Usuário";
                 
                 tr.innerHTML = `
                     <td>${(index + 1).toString().padStart(2, '0')}</td>
-                    <td>${user.nome}</td>
-                    <td>${user.email}</td>
-                    <td>${nivelTexto}</td>
+                    <td style="text-align: center;">${cat.nome}</td>
                     <td><span class="${badgeClass}">${statusText}</span></td>
                     <td>
                         <a href="#" class="btn-icon" style="text-decoration:none; color:inherit; margin-right: 5px;"><i class="fa-solid fa-pen"></i></a>
-                        <button class="btn-icon" onclick="deletarUsuario(${index})" style="cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button class="btn-icon" onclick="deletarCategoria(${index})" style="cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></button>
                     </td>
                 `;
                 tbody.appendChild(tr);
             });
         }
 
-        window.deletarUsuario = function(index) {
-            if (confirm('Tem certeza que deseja excluir este usuário?')) {
-                let lista = JSON.parse(localStorage.getItem('bancoUsuarios')) || [];
+        window.deletarCategoria = function(index) {
+            if (confirm('Tem certeza que deseja excluir esta categoria?')) {
+                let lista = JSON.parse(localStorage.getItem('bancoCategorias')) || [];
                 lista.splice(index, 1);
-                localStorage.setItem('bancoUsuarios', JSON.stringify(lista));
+                localStorage.setItem('bancoCategorias', JSON.stringify(lista));
                 renderTable();
             }
         };
